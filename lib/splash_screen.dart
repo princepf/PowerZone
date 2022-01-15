@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/images/splash.png"))),
+                    image: AssetImage("assets/images/start.png"))),
           ),
           Container(
             padding: EdgeInsets.only(left: 80, top: 700),
