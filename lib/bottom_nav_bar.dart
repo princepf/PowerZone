@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'analystics_page.dart';
 import 'home_page.dart';
+import 'profile_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   BottomNavBar({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> screen = [
     HomePage(),
     AnalysticsPage(),
-    HomePage(),
+    ProfilePage(),
   ];
 
   @override

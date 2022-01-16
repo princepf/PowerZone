@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class AnalysticsPage extends StatefulWidget {
   AnalysticsPage({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -36,11 +38,12 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
-        child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 3),
               child: Text(
                 "Today",
                 style: TextStyle(
@@ -56,7 +59,7 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.only(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -105,6 +108,35 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
               ),
             ),
             Container(
+              alignment: Alignment.center,
+              child: CircularPercentIndicator(
+                  radius: 180,
+                  lineWidth: 17,
+                  animation: true,
+                  percent: 0.7,
+                  center: Container(
+                    child: Text(
+                      "536 Cal",
+                      style: new TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                  header: Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      "Active calories",
+                      style: new TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                  circularStrokeCap: CircularStrokeCap.round,
+                  backgroundColor: Colors.black12,
+                  linearGradient: LinearGradient(
+                      colors: [Color(0xfffda0dd), Color(0xff81c1fe)])),
+            ),
+            Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -136,6 +168,15 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
                                 fontSize: 30),
                           ),
                         ),
+                        LinearPercentIndicator(
+                          alignment: MainAxisAlignment.center,
+                          width: 140.0,
+                          lineHeight: 14.0,
+                          percent: 0.4,
+                          linearStrokeCap: LinearStrokeCap.roundAll,
+                          backgroundColor: Colors.white,
+                          progressColor: Color(0xff81c1fe),
+                        ),
                       ],
                     ),
                   ),
@@ -166,6 +207,15 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30),
                           ),
+                        ),
+                        LinearPercentIndicator(
+                          alignment: MainAxisAlignment.center,
+                          width: 140.0,
+                          lineHeight: 14.0,
+                          percent: 0.7,
+                          linearStrokeCap: LinearStrokeCap.roundAll,
+                          backgroundColor: Colors.white,
+                          progressColor: Color(0xfffda0dd),
                         ),
                       ],
                     ),

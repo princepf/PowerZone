@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         bumi: '55 Min',
         color: '0xfffdaodd',
         dcr: 'Full body workout',
-        heading: 'Weight Loss Training',
+        heading: 'Mountain \nclimber',
         image: 'assets/images/unbg1.png'),
     Topworkoutmodel(
         buca: '🔥 35 Cal',
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         color: 'Colors.black',
         //0xff99d8ef
         dcr: 'Full body workout',
-        heading: 'Weight Loss Training',
+        heading: 'Train three days a week',
         image: 'assets/images/unbg3.png'),
   ];
   List<Categarycard> categarycard = [

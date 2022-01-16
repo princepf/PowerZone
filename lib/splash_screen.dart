@@ -48,9 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ),
-          Container(
-              padding: EdgeInsets.only(left: 180, top: 780),
-              child: CircularProgressIndicator(color: Color(0XFFF75B5B)))
+
           //color: Color(0XFFF75B5B),
         ]),
       ),
