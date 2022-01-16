@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'bottom_nav_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(milliseconds: 1500),
         () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage())));
+            context, MaterialPageRoute(builder: (context) => BottomNavBar())));
   }
 
   @override

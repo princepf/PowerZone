@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:power_zone/home_page_widget/top_workouts.dart';
 
 import 'models/home_model.dart';
 
@@ -47,27 +46,18 @@ class _HomePageState extends State<HomePage> {
         heading: 'Weight Loss Training',
         image: 'assets/images/unbg3.png'),
   ];
-  //int currentpose = 0;
-  List cources = [
-    "assets/images/endurance.jpg",
-    "assets/images/strength.jpg",
-    "assets/images/sport.jpg",
-    "assets/images/flexibility.jpg",
-    "assets/images/aerobic.jpg",
-    "assets/images/calisthenics.jpg",
-    "assets/images/jogging.jpg",
-    "assets/images/karate.jpg",
+  List<Categarycard> categarycard = [
+    Categarycard(image: 'assets/images/endurance.jpg', text: 'Endurance'),
+    Categarycard(
+        image: 'assets/images/strength.jpg', text: 'Strength training'),
+    Categarycard(image: 'assets/images/sport.jpg', text: 'Sport'),
+    Categarycard(image: 'assets/images/flexibility.jpg', text: 'Flexibility'),
+    Categarycard(image: 'assets/images/aerobic.jpg', text: 'Aerobic'),
+    Categarycard(image: 'assets/images/calisthenics.jpg', text: 'Calisthenics'),
+    Categarycard(image: 'assets/images/jogging.jpg', text: 'Jogging'),
+    Categarycard(image: 'assets/images/karate.jpg', text: 'Karate'),
   ];
-  List courcestext = [
-    "Endurance",
-    "Strength training",
-    "Sport",
-    "Flexibility",
-    "Aerobics",
-    "Calisthenics",
-    "Jogging",
-    "Karate",
-  ];
+//int currentpose = 0;
   // List<String> infintycard = [
   //   "assets/images/gb1.jpg",
   //   "assets/images/gg1.jpg",
@@ -101,7 +91,7 @@ class _HomePageState extends State<HomePage> {
               size: 30,
             ),
             SizedBox(
-              width: 20,
+              width: 15,
             )
           ],
         ),
@@ -109,6 +99,40 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.vertical,
             children: [
+              //search
+              Container(
+                margin: EdgeInsets.all(20),
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.circular(30)),
+                child: ListView(
+                  children: [
+                    ListTile(
+                      title: TextFormField(
+                        decoration: InputDecoration(
+                            prefixIcon: GestureDetector(
+                              onTap: () {
+                                setState(() {});
+                              },
+                              child: Icon(
+                                Icons.search,
+                              ),
+                            ),
+                            hintText: "Where are you going now?",
+                            border: InputBorder.none),
+                        style: TextStyle(
+                          fontSize: 15,
+                          // color: Colors.grey[400],
+                        ),
+                      ),
+                      //leading: Icon(Icons.search_rounded),
+                      trailing: Icon(Icons.sort),
+                    )
+                  ],
+                ),
+              ),
               // CarouselSlider.builder(
               //     itemCount: infintycard.length,
               //     itemBuilder: (context, index, realIndex) =>
@@ -137,11 +161,11 @@ class _HomePageState extends State<HomePage> {
               //   ),
               // ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 child: Text(
                   "Top Workouts 💪🏻",
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                 ),
@@ -155,12 +179,12 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: topworkouts.length,
                     itemBuilder: (context, index) => Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
+                          margin: EdgeInsets.symmetric(horizontal: 10),
                           height: 200,
                           width: 350,
                           decoration: BoxDecoration(
                               color: Color(0xff99d8ef),
-                              borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(40)),
                           child: Stack(
                             children: [
                               Positioned(
@@ -236,39 +260,360 @@ class _HomePageState extends State<HomePage> {
                           ),
                         )),
               ),
+
+              //categary
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Text(
                   "Category",
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                 ),
               ),
               Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
                   height: 150,
                   width: double.infinity,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: cources.length,
+                      itemCount: categarycard.length,
                       itemBuilder: (context, index) => Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
-                                height: 110,
-                                width: 110,
+                                margin: EdgeInsets.symmetric(horizontal: 8),
+                                height: 150,
+                                width: 130,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
+                                    borderRadius: BorderRadius.circular(30),
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image:
-                                            AssetImage("${cources[index]}"))),
+                                        image: AssetImage(
+                                            "${categarycard[index].image}"))),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 10),
+                                        child: Text(
+                                          "${categarycard[index].text}",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        )),
+                                  ],
+                                ),
                               ),
-                              Text("${courcestext[index]}")
                             ],
                           ))),
+
+              //Todays
+              Container(
+                padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
+                child: Text(
+                  "Todays Plan",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
+                          "Activity",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
+                          "Show All",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color(0xff99d8ef),
+                    ),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/gg1.jpg"))),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                "Squats",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                          Container(
+                              child: Text(
+                            "10 sets of squats",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ))
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Container(
+                          padding: EdgeInsets.only(top: 5, left: 50),
+                          child: Text(
+                            "06:00 AM",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color(0xfffda0dd),
+                    ),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/sport.jpg"))),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                "Running",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                          Container(
+                              child: Text(
+                            "15 Km  Running ",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ))
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Container(
+                          padding: EdgeInsets.only(top: 5, left: 50),
+                          child: Text(
+                            "06:45 AM",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+
+              //meal
+              Container(
+                padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
+                child: Text(
+                  "Meal",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
+                          "Activity",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
+                          "Show All",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color(0xff99d8ef),
+                    ),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/meal.jpg"))),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                "Breakfast",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                          Container(
+                              child: Text(
+                            "Tea,Bread,BoileEgg",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ))
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 4,
+                      child: Container(
+                          padding: EdgeInsets.only(top: 5, left: 50),
+                          child: Text(
+                            "08:00 AM",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                height: 80,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Color(0xfffda0dd),
+                    ),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/meal1.jpg"))),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                "Lunch",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                          Container(
+                              child: Text(
+                            "Taco Salad Bowls. ",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ))
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child: Container(
+                          padding: EdgeInsets.only(top: 5, left: 50),
+                          child: Text(
+                            "12:45 AM",
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

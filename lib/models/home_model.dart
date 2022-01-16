@@ -1,5 +1,56 @@
 import 'dart:convert';
 
+class Categarycard {
+  final String image;
+  final String text;
+  Categarycard({
+    required this.image,
+    required this.text,
+  });
+
+  Categarycard copyWith({
+    String? image,
+    String? text,
+  }) {
+    return Categarycard(
+      image: image ?? this.image,
+      text: text ?? this.text,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'image': image,
+      'text': text,
+    };
+  }
+
+  factory Categarycard.fromMap(Map<String, dynamic> map) {
+    return Categarycard(
+      image: map['image'] ?? '',
+      text: map['text'] ?? '',
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Categarycard.fromJson(String source) =>
+      Categarycard.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'Categarycard(image: $image, text: $text)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Categarycard && other.image == image && other.text == text;
+  }
+
+  @override
+  int get hashCode => image.hashCode ^ text.hashCode;
+}
+
 class Topworkoutmodel {
   final String color;
   final String heading;
