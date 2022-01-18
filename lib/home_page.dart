@@ -347,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xff99d8ef),
+                      color: Color(0xff99d8ef).withOpacity(0.4),
                     ),
                     borderRadius: BorderRadius.circular(15)),
                 child: Row(
@@ -407,7 +407,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xfffda0dd),
+                      color: Color(0xfffda0dd).withOpacity(0.4),
                     ),
                     borderRadius: BorderRadius.circular(15)),
                 child: Row(
@@ -500,7 +500,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xff99d8ef),
+                      color: Color(0xff99d8ef).withOpacity(0.4),
                     ),
                     borderRadius: BorderRadius.circular(15)),
                 child: Row(
@@ -560,7 +560,7 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xfffda0dd),
+                      color: Color(0xfffda0dd).withOpacity(0.4),
                     ),
                     borderRadius: BorderRadius.circular(15)),
                 child: Row(

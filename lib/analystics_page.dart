@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:intl/intl.dart';
 
 class AnalysticsPage extends StatefulWidget {
   AnalysticsPage({Key? key}) : super(key: key);
@@ -9,6 +10,17 @@ class AnalysticsPage extends StatefulWidget {
 }
 
 class _AnalysticsPageState extends State<AnalysticsPage> {
+  var selectedItem = 'Fat';
+  var timeZone = 'Day';
+  List<String> calories = ["Fat", "Cholesterol", "Energy", "Sugar", "Water"];
+  List<String> zons = [
+    "Day",
+    "Week",
+    "Month",
+    "Year",
+  ];
+  DateTime date = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +55,7 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            //Text
             Container(
               child: Text(
                 "Today",
@@ -52,61 +65,105 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
                     fontSize: 20),
               ),
             ),
-            Container(
-              child: Text(
-                "Mon 26 Apr",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+
+            //Datepicker
+            InkWell(
+              onTap: () async {
+                var seletedDate = await showDatePicker(
+                    context: context,
+                    initialDate: date,
+                    firstDate: DateTime(2015, 1),
+                    lastDate: date);
+                if (seletedDate != null) {
+                  setState(() {
+                    date = seletedDate;
+                  });
+                  print(date);
+                }
+              },
+              child: Container(
+                child: Text(
+                  "${DateFormat('E d MMM').format(date)} ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
               ),
             ),
+
+            //Popup
             Container(
               padding: EdgeInsets.only(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  //Cal
                   Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(30)),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Calories",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                    child: DropdownButton(
+                        underline: Container(
+                          height: 2,
+                          color: Colors.grey[200],
                         ),
-                        Icon(
+                        icon: Icon(
                           Icons.arrow_drop_down,
                           size: 40,
                           color: Color(0xfffda0dd),
-                        )
-                      ],
-                    ),
+                        ),
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        onChanged: (String? itemValue) {
+                          setState(() {
+                            selectedItem = itemValue!;
+                          });
+                        },
+                        value: selectedItem,
+                        items: calories.map((item) {
+                          return DropdownMenuItem(
+                              value: item, child: Text(item));
+                        }).toList()),
                   ),
+                  //TimeZone
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(30)),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Today",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Icon(
-                          Icons.arrow_drop_down,
-                          size: 40,
-                          color: Color(0xfffda0dd),
-                        )
-                      ],
+                    child: DropdownButton(
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.grey[200],
+                      ),
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        size: 40,
+                        color: Color(0xfffda0dd),
+                      ),
+                      value: timeZone,
+                      onChanged: (String? itemvalue) {
+                        timeZone = itemvalue!;
+                      },
+                      items: zons.map((item) {
+                        return DropdownMenuItem(value: item, child: Text(item));
+                      }).toList(),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
+
+            //RoundIndicator
             Container(
               alignment: Alignment.center,
               child: CircularPercentIndicator(
@@ -136,6 +193,8 @@ class _AnalysticsPageState extends State<AnalysticsPage> {
                   linearGradient: LinearGradient(
                       colors: [Color(0xfffda0dd), Color(0xff81c1fe)])),
             ),
+
+            //Box
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

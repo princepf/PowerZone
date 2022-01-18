@@ -53,8 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
                                 spreadRadius: 0)
                           ],
                           color: Colors.white),
@@ -82,8 +82,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
                                 spreadRadius: 0)
                           ],
                           color: Colors.white),
@@ -112,8 +112,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
                                 spreadRadius: 0)
                           ],
                           color: Colors.white),
@@ -134,8 +134,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
                                 spreadRadius: 0)
                           ],
                           color: Colors.white),
@@ -156,8 +156,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey,
-                                blurRadius: 10,
-                                offset: Offset(0, 5),
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
                                 spreadRadius: 0)
                           ],
                           color: Colors.white),
@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
 
               Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: Text(
                   "join us our social media",
                   style: TextStyle(
